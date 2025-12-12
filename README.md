@@ -1,21 +1,25 @@
 # ConnectCraft — LinkedIn Message Generator
-ConnectCraft is a React-based application that helps users generate personalized and professional LinkedIn messages.
-This project reflects my effort to strengthen my frontend development skills while building a tool that supports real-world networking and job-search needs.
+ConnectCraft is a React-based application designed to help users generate personalized, professional LinkedIn messages. This project was built to apply my React knowledge to a practical, real-world problem, creating a tool that saves time and improves networking efficiency.
 
 ## Purpose
-As a student exploring opportunities in software development and Data Analyst, I often found it challenging and time-consuming to craft effective LinkedIn outreach messages.
-To solve this, I built ConnectCraft — a tool that allows users to quickly create tailored messages for professional networking.
-This project helped me learn React through a meaningful, practical application rather than through simple demo components.
+As a student exploring software development and data analysis, I wanted to build a project that is both useful and meaningful, rather than just a practice demo. Crafting effective LinkedIn messages can be time-consuming and challenging, so I developed ConnectCraft to generate tailored messages quickly.
+This project allowed me to apply React, TypeScript, and UI design skills in a real-world scenario while delivering a practical tool that can help professionals in networking and career development.
 
 ## Key Features
-Generate LinkedIn messages based on user inputs
-Supports multiple message types:
+Generate LinkedIn messages based on user input
+**Multiple message types:**
 ```
 Cold outreach
-Referral requests 
-Thank-you notes 
+Referral requests
+Thank-you notes
 Follow-up messages
 ```
+**Tone customization**: Friendly, Professional, or Short & Direct
+**Character limit options**: 200 or 500 characters
+Light/Dark mode using CSS variables
+Save and revisit messages using localStorage
+Copy, save, export (.txt or .md), or clear messages
+
 ##### Tone customization: Friendly, Professional, or Short & Direct
 ##### Character limit toggle: 200 or 500 characters
 ##### Light/Dark mode using CSS variables
@@ -23,13 +27,13 @@ Follow-up messages
 ##### Options to copy, save, export (.txt or .md), or delete messages
 
 ### What I Learned
-Through ConnectCraft, I strengthened several core frontend development skills, 
-including building a complete React application using Vite’s fast development environment 
-and managing dynamic UI behavior with React hooks such as useState and useEffect. 
-I also learned how to persist user data with localStorage, implement light and dark themes using CSS variables, 
-and design a modern glassmorphism-style interface with transparency and blur effects. 
-Additionally, creating features like copy, save/export, and clear actions helped me 
-improve user interaction design and build a smoother, more intuitive experience overall.
+Through ConnectCraft, I strengthened practical frontend skills including:
+Building a full React application with Vite
+Managing dynamic UI state with React hooks (useState and useEffect)
+Persisting user data with localStorage
+Implementing theme toggling via CSS variables
+Designing a modern glassmorphism UI with transparency and blur effects
+Creating smooth user interactions, including copy, save/export, and clear actions
 
 ### Tech Stack
 React (Vite)
@@ -56,9 +60,8 @@ Here’s a polished alternative for your README:
 
 ### 🙌 Acknowledgments
 
-ConnectCraft was built as part of my learning journey to 
-improve my frontend skills. This project gave me real hands-on 
-experience with React, TypeScript, and UI design, while also 
-creating a useful tool for professional networking. It shows 
-how a small, student-driven project can have practical value.
-
+ConnectCraft was developed as part of my journey to apply 
+React skills in building something practical and valuable. 
+This project demonstrates how small, student-driven projects 
+can have real-world applications while providing meaningful 
+hands-on learning in frontend development.
