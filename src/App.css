@@ -340,7 +340,7 @@ textarea {
 /* Preview text box that shows the generated message */
 .preview {
   width: 100%;
-  min-height: 340px;
+  min-height: Auto;
   padding: 14px;
   border-radius: 10px;
   border: 1px solid rgba(0, 4, 9, 0.06);
