@@ -1,0 +1,475 @@
+/* -------------------------
+   Frosted glass theme CSS
+   ------------------------- */
+
+/* Global variables and base font for the whole app */
+:root {
+  /* Background gradient colors for the page */
+  --bg-gradient-a: rgb(253, 246, 181);
+  --bg-gradient-b: rgb(255, 236, 230);
+
+  /* Glassmorphism card colors (panels) */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.45);
+
+  /* Accent color for buttons, slider, etc. */
+  --accent: #0dc13a;
+
+  /* Muted text color for labels / helper text */
+  --muted: #000102;
+
+  /* Main text color */
+  --text: #000000;
+
+  /* Danger / error button color */
+  --danger: #ef4444;
+
+  /* Default card shadow */
+  --shadow: 0 10px 30px rgba(40, 2, 2, 0.09);
+
+  /* Base font stack */
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+}
+
+/* Dark theme overrides for all variables above */
+:root[data-theme="dark"] {
+  --bg-gradient-a: rgba(16, 18, 23, 1);
+  --bg-gradient-b: rgba(25, 27, 31, 1);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --accent: #8b5cf6;
+  --muted: #9aa0a6;
+  --text: #e6eef8;
+  --danger: #ff6b6b;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* -------------------------
+   Page base layout
+   ------------------------- */
+
+/* Make page and root fill screen and remove margin */
+html,
+body,
+#root {
+  height: flex;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(
+    185deg,
+    var(--bg-gradient-a),
+    var(--bg-gradient-b)
+  );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px 18px 24px;
+  box-sizing: border-box;
+}
+
+.app {
+  width: min(1200px, 96%);
+  background: linear-gradient(
+    180deg,
+    rgba(240, 78, 78, 0.02),
+    rgba(255, 255, 255, 0)
+  );
+  padding: 24px 32px 24px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: popIn 420ms ease;
+}
+
+/* -------------------------
+   Two-column layout (Inputs | Preview)
+   ------------------------- */
+
+/* Grid that splits into left/right panels */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr;   /* left slightly wider than right */
+  gap: 24px;
+  align-items: start;
+}
+
+/* -------------------------
+   Top bar (title + controls)
+   ------------------------- */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+/* Brand/title area on the left of top bar */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-text .title {
+  font-size: 2.2rem;   /* big title text */
+  color: var(--text);
+  font-weight: 900;
+}
+
+.brand-text .tagline {
+  font-size: 1rem;  /* small subtitle */
+  color: var(--muted);
+}
+
+/* Controls (theme toggle + GitHub) on the right of top bar */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.control-row {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+/* -------------------------
+   Buttons
+   ------------------------- */
+
+/* Base button style */
+button {
+  padding: 8px 12px;
+  border-radius: 9px;
+  border: none;
+  background: var(--accent);
+  color: rgb(14, 1, 1);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Smaller size variant */
+button.small {
+  padding: 3px 5px;
+  font-size: 1rem;  /* button text size */
+}
+
+/* Secondary (outlined / transparent) variant */
+button.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+/* Ghost button used for GitHub etc. */
+button.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Slight hover lift for ghost buttons */
+button.ghost:hover {
+  transform: translateY(-2px);
+}
+
+/* Danger button (red) */
+.danger {
+  background: var(--danger);
+}
+
+/* -------------------------
+   Theme switch toggle
+   ------------------------- */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;   /* overall toggle width */
+  height: 26px;  /* overall toggle height */
+}
+
+/* Hide the raw checkbox */
+.switch input {
+  display: none;
+}
+
+/* Slider track of the switch */
+.switch .slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;  /* pill shape */
+  background: rgba(229, 2, 2, 0.18);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.02);
+}
+
+/* Track when checked (gradient) */
+.switch input:checked + .slider {
+  background: linear-gradient(90deg, var(--accent), #549a24);
+}
+
+/* The circle/knob of the toggle */
+.switch .slider::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  background: rgb(119, 27, 2);
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* Move knob to the right when checked */
+.switch input:checked + .slider::after {
+  transform: translateX(18px);
+}
+
+/* -------------------------
+   Panels (left & right cards)
+   ------------------------- */
+
+/* Each glass card: Inputs + Preview */
+.panel {
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px) saturate(120%); /* frosted glass blur */
+  box-shadow: 0 8px 28px rgba(8, 8, 12, 0.08);
+}
+
+/* Panel titles (Inputs, Preview) */
+.panel h2 {
+  margin: 0 0 12px 0;
+  color: var(--text);
+}
+
+/* -------------------------
+   Form controls
+   ------------------------- */
+
+/* Label text for all inputs (headings like Recipient name, Their role, etc.) */
+label {
+  display: block;
+  font-size: 0.9rem;      /* label font size */
+  color: #000000;         /* black in light mode */
+  font-weight: 600;       /* bold-ish */
+  margin-bottom: 8px;
+}
+
+/* Keep labels readable in dark theme */
+:root[data-theme="dark"] label {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Base styles for input, select, textarea */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(20, 24, 30, 0.06);
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Make the Message type dropdown taller */
+select {
+  height: 52px;           /* try 48–56px until it looks right */
+  line-height: 52px;      /* helps vertically center the text */
+}
+
+/* Dark theme version of inputs */
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
+  background: rgba(157, 87, 87, 0.03);
+}
+
+/* Multi-line text fields */
+textarea {
+  min-height: 140px;
+  resize: vertical;   /* allow user to resize vertically */
+}
+
+/* -------------------------
+   Preview area
+   ------------------------- */
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* Buttons area above preview textarea */
+.preview-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Preview text box that shows the generated message */
+.preview {
+  width: 100%;
+  min-height: 340px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 4, 9, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* -------------------------
+   Saved messages
+   ------------------------- */
+
+/* Summary line for collapsible saved sections */
+.saved-list summary {
+  cursor: pointer;
+  color: var(--muted);
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Scrollable list container */
+.list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* Single saved item row */
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Text snippet shown for each saved message */
+.message-snippet {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  white-space: pre-wrap;
+  max-width: 70%;
+}
+
+/* -------------------------
+   Tone slider & labels
+   ------------------------- */
+
+/* Wrapper for tone slider + labels */
+.tone {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Labels under the slider: Friendly | Professional | Concise */
+.tone-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Highlight active tone label */
+.tone-labels .active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* -------------------------
+   Danger zone (clear all)
+   ------------------------- */
+
+.danger-zone {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* -------------------------
+   Utility styles
+   ------------------------- */
+
+/* Helper for small descriptive text */
+.small {
+  font-size: 0.85rem;
+  color: #000000;    /* black in light mode */
+  font-weight: 600;  /* bold-ish */
+}
+
+/* optional: in dark mode keep them light */
+:root[data-theme="dark"] .small {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Responsive: stack panels on small screens */
+@media (max-width: 980px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+  .preview {
+    min-height: 220px;
+  }
+}
+
+/* Entrance animation for the app container */
+@keyframes popIn {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Ensure the title color follows dark theme variable */
+:root[data-theme="dark"] .brand-text .title {
+  color: var(--text);
+}
