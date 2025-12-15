@@ -2,6 +2,7 @@
    Frosted glass theme CSS
    ------------------------- */
 
+
 /* Global variables and base font for the whole app */
 :root {
   /* Background gradient colors for the page */
@@ -32,6 +33,7 @@
     Roboto, "Helvetica Neue", Arial;
 }
 
+
 /* Dark theme overrides for all variables above */
 :root[data-theme="dark"] {
   --bg-gradient-a: rgba(16, 18, 23, 1);
@@ -45,9 +47,11 @@
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
 }
 
+
 /* -------------------------
    Page base layout
    ------------------------- */
+
 
 /* Make page and root fill screen and remove margin */
 html,
@@ -56,6 +60,7 @@ body,
   height: flex;
   margin: 0;
 }
+
 
 body {
   min-height: 100vh;
@@ -71,6 +76,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .outer {
   width: 100%;
   display: flex;
@@ -78,6 +84,7 @@ body {
   padding: 16px 18px 24px;
   box-sizing: border-box;
 }
+
 
 .app {
   width: min(1200px, 96%);
@@ -94,21 +101,25 @@ body {
   animation: popIn 420ms ease;
 }
 
+
 /* -------------------------
    Two-column layout (Inputs | Preview)
    ------------------------- */
 
+
 /* Grid that splits into left/right panels */
 .main-grid {
   display: grid;
-  grid-template-columns: 1.2fr 2.7fr;   /* left slightly wider than right */
+  grid-template-columns: 1.2fr 2.3fr;   /* left slightly wider than right */
   gap: 24px;
   align-items: start;
 }
 
+
 /* -------------------------
    Top bar (title + controls)
    ------------------------- */
+
 
 .topbar {
   display: flex;
@@ -118,6 +129,7 @@ body {
   margin-bottom: 8px;
 }
 
+
 /* Brand/title area on the left of top bar */
 .brand {
   display: flex;
@@ -125,16 +137,19 @@ body {
   gap: 12px;
 }
 
+
 .brand-text .title {
   font-size: 2.2rem;   /* big title text */
   color: var(--text);
   font-weight: 900;
 }
 
+
 .brand-text .tagline {
   font-size: 1rem;  /* small subtitle */
   color: var(--muted);
 }
+
 
 /* Controls (theme toggle + GitHub) on the right of top bar */
 .controls {
@@ -143,15 +158,18 @@ body {
   gap: 1px;
 }
 
+
 .control-row {
   display: flex;
   gap: 9px;
   align-items: center;
 }
 
+
 /* -------------------------
    Buttons
    ------------------------- */
+
 
 /* Base button style */
 button {
@@ -164,11 +182,13 @@ button {
   font-weight: 600;
 }
 
+
 /* Smaller size variant */
 button.small {
   padding: 3px 5px;
   font-size: 1rem;  /* button text size */
 }
+
 
 /* Secondary (outlined / transparent) variant */
 button.secondary {
@@ -176,6 +196,7 @@ button.secondary {
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--text);
 }
+
 
 /* Ghost button used for GitHub etc. */
 button.ghost {
@@ -188,19 +209,23 @@ button.ghost {
   font-weight: 600;
 }
 
+
 /* Slight hover lift for ghost buttons */
 button.ghost:hover {
   transform: translateY(-2px);
 }
+
 
 /* Danger button (red) */
 .danger {
   background: var(--danger);
 }
 
+
 /* -------------------------
    Theme switch toggle
    ------------------------- */
+
 
 .switch {
   position: relative;
@@ -209,10 +234,12 @@ button.ghost:hover {
   height: 26px;  /* overall toggle height */
 }
 
+
 /* Hide the raw checkbox */
 .switch input {
   display: none;
 }
+
 
 /* Slider track of the switch */
 .switch .slider {
@@ -223,10 +250,12 @@ button.ghost:hover {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.02);
 }
 
+
 /* Track when checked (gradient) */
 .switch input:checked + .slider {
   background: linear-gradient(90deg, var(--accent), #549a24);
 }
+
 
 /* The circle/knob of the toggle */
 .switch .slider::after {
@@ -241,14 +270,17 @@ button.ghost:hover {
   transition: transform 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
+
 /* Move knob to the right when checked */
 .switch input:checked + .slider::after {
   transform: translateX(18px);
 }
 
+
 /* -------------------------
    Panels (left & right cards)
    ------------------------- */
+
 
 /* Each glass card: Inputs + Preview */
 .panel {
@@ -260,15 +292,18 @@ button.ghost:hover {
   box-shadow: 0 8px 28px rgba(8, 8, 12, 0.08);
 }
 
+
 /* Panel titles (Inputs, Preview) */
 .panel h2 {
   margin: 0 0 12px 0;
   color: var(--text);
 }
 
+
 /* -------------------------
    Form controls
    ------------------------- */
+
 
 /* Label text for all inputs (headings like Recipient name, Their role, etc.) */
 label {
@@ -279,11 +314,13 @@ label {
   margin-bottom: 8px;
 }
 
+
 /* Keep labels readable in dark theme */
 :root[data-theme="dark"] label {
   color: #ffffff;
   font-weight: 600;
 }
+
 
 /* Base styles for input, select, textarea */
 input,
@@ -299,11 +336,13 @@ textarea {
   background: rgba(255, 255, 255, 0.6);
 }
 
+
 /* Make the Message type dropdown taller */
 select {
   height: 52px;           /* try 48–56px until it looks right */
   line-height: 52px;      /* helps vertically center the text */
 }
+
 
 /* Dark theme version of inputs */
 :root[data-theme="dark"] input,
@@ -312,15 +351,18 @@ select {
   background: rgba(157, 87, 87, 0.03);
 }
 
+
 /* Multi-line text fields */
 textarea {
-  min-height: 140px;
+  min-height: 170px;
   resize: vertical;   /* allow user to resize vertically */
 }
+
 
 /* -------------------------
    Preview area
    ------------------------- */
+
 
 .preview-header {
   display: flex;
@@ -330,6 +372,21 @@ textarea {
   margin-bottom: 8px;
 }
 
+
+/* NEW: row that holds Character limit and Personality */
+.preview-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+/* NEW: each field in that row */
+.preview-field {
+  flex: 1;
+}
+
+
 /* Buttons area above preview textarea */
 .preview-controls {
   display: flex;
@@ -337,10 +394,11 @@ textarea {
   align-items: center;
 }
 
+
 /* Preview text box that shows the generated message */
 .preview {
   width: 100%;
-  height: 450px;           /* fixed height */
+  height: 520px;           /* fixed height */
   padding: 14px;
   border-radius: 10px;
   border: 1px solid rgba(0, 4, 9, 0.06);
@@ -352,9 +410,11 @@ textarea {
 }
 
 
+
 /* -------------------------
    Saved messages
    ------------------------- */
+
 
 /* Summary line for collapsible saved sections */
 .saved-list summary {
@@ -363,6 +423,7 @@ textarea {
   margin-top: 12px;
   font-weight: 600;
 }
+
 
 /* Scrollable list container */
 .list {
@@ -374,6 +435,7 @@ textarea {
   overflow: auto;
   padding-right: 6px;
 }
+
 
 /* Single saved item row */
 .item {
@@ -387,6 +449,7 @@ textarea {
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+
 /* Text snippet shown for each saved message */
 .message-snippet {
   margin: 0;
@@ -396,9 +459,11 @@ textarea {
   max-width: 70%;
 }
 
+
 /* -------------------------
    Tone slider & labels
    ------------------------- */
+
 
 /* Wrapper for tone slider + labels */
 .tone {
@@ -408,6 +473,7 @@ textarea {
   margin-top: 8px;
 }
 
+
 /* Labels under the slider: Friendly | Professional | Concise */
 .tone-labels {
   display: flex;
@@ -416,15 +482,18 @@ textarea {
   color: var(--muted);
 }
 
+
 /* Highlight active tone label */
 .tone-labels .active {
   color: var(--accent);
   font-weight: 700;
 }
 
+
 /* -------------------------
    Danger zone (clear all)
    ------------------------- */
+
 
 .danger-zone {
   margin-top: 12px;
@@ -432,9 +501,11 @@ textarea {
   justify-content: flex-end;
 }
 
+
 /* -------------------------
    Utility styles
    ------------------------- */
+
 
 /* Helper for small descriptive text */
 .small {
@@ -443,11 +514,13 @@ textarea {
   font-weight: 600;  /* bold-ish */
 }
 
+
 /* optional: in dark mode keep them light */
 :root[data-theme="dark"] .small {
   color: #ffffff;
   font-weight: 600;
 }
+
 
 /* Responsive: stack panels on small screens */
 @media (max-width: 980px) {
@@ -458,6 +531,7 @@ textarea {
     min-height: 220px;
   }
 }
+
 
 /* Entrance animation for the app container */
 @keyframes popIn {
@@ -470,6 +544,7 @@ textarea {
     opacity: 1;
   }
 }
+
 
 /* Ensure the title color follows dark theme variable */
 :root[data-theme="dark"] .brand-text .title {
