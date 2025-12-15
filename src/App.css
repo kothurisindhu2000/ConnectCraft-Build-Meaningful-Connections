@@ -101,7 +101,7 @@ body {
 /* Grid that splits into left/right panels */
 .main-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1.4fr;   /* left slightly wider than right */
+  grid-template-columns: 1.2fr 2.7fr;   /* left slightly wider than right */
   gap: 24px;
   align-items: start;
 }
@@ -340,11 +340,11 @@ textarea {
 /* Preview text box that shows the generated message */
 .preview {
   width: 100%;
-  height: 550px;           /* fixed height */
+  height: 450px;           /* fixed height */
   padding: 14px;
   border-radius: 10px;
   border: 1px solid rgba(0, 4, 9, 0.06);
-  background: #fdf0d0;     /* temporary obvious color */
+  background: #f2e9d0;     /* temporary obvious color */
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   color: var(--text);
   line-height: 1.9;
